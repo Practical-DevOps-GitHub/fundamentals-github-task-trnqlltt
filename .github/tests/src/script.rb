@@ -80,4 +80,20 @@ class GithubApi
     JSON.parse(response.body)
   end
 
+  def send_discord_message(pr_url, pr_author)
+  uri = URI.parse(ENV['DISCORD_WEBHOOK_URL'])
+  header = { 'Content-Type': 'application/json' }
+  body = {
+    content: "📣 New PR created by **#{pr_author}**: #{pr_url}"
+  }
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  request = Net::HTTP::Post.new(uri.request_uri, header)
+  request.body = body.to_json
+
+  response = http.request(request)
+  puts "Discord response: #{response.code} #{response.message}"
+end
+
 end
