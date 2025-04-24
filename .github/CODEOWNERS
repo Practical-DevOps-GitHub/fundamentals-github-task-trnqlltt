@@ -1,0 +1,2 @@
+# This file means that softservedata will own all files in the main branch
+main/* @softservedata
