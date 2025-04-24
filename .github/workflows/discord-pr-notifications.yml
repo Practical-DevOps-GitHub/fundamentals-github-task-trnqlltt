@@ -1,0 +1,23 @@
+name: Discord PR Notification
+
+on:
+  pull_request:
+    types: [opened, closed, reopened, synchronize]  # Тригер на створення, закриття, повторне відкриття чи синхронізацію PR
+
+jobs:
+  send_notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send PR notification to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}  # Секрет з URL webhook Discord
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{
+            "content": "A pull request has been created: **${{ github.event.pull_request.title }}**\nPR Link: ${{ github.event.pull_request.html_url }}\nAuthor: ${{ github.event.pull_request.user.login }}",
+            "username": "GitHub PR Bot"
+          }' $DISCORD_WEBHOOK_URL
