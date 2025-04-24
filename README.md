@@ -16,12 +16,13 @@
 ## Issue ticket number and link
 
 ## Checklist before requesting a review
-- ✅ I have performed a self-review of my code  
-- ✅ If it is a core feature, I have added thorough tests  
-- ✅ Do we need to implement analytics?  
-  — No, we don't.  
-- ✅ Will this be part of a product update?  
-  — This update adds Discord notifications for newly created pull requests to improve team collaboration.
+- [x] I have performed a self-review of my code  
+- [x] If it is a core feature, I have added thorough tests  
+- [x] Do we need to implement analytics?  
+  - No, we don't.  
+- [x] Will this be part of a product update?  
+  - This update adds Discord notifications for newly created pull requests to improve team collaboration.
+
 
 
 
